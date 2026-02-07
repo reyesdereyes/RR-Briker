@@ -580,6 +580,8 @@
   border-top-color: var(--primary-red);
 }
 
+
+
 .cat-icon {
   font-size: clamp(3rem, 12vw, 4.5rem);
   display: block;
