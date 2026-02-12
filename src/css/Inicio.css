@@ -61,7 +61,7 @@ body {
 
 /* ================= HERO SECTION ================= */
 .hero-section {
-  background: linear-gradient(135deg, #0a0a0a, #161616);
+  background: linear-gradient(135deg, #ff0000,  #000000);
   padding: 160px 0;
   position: relative;
   overflow: hidden;
