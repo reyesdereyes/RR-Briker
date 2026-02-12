@@ -29,7 +29,7 @@
 body {
   font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: #fcfcfc;
-  color: var(--rr-black);
+  color: var(--rr-red);
   line-height: 1.6;
   overflow-x: hidden;
 }
