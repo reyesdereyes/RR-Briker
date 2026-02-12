@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../css/Whatsapp.css"; // Asegúrate de crear este archivo con los estilos necesarios
+import "../css/whatsapp.css"; // Asegúrate de crear este archivo con los estilos necesarios
 
 const Mensaje = () => {
   const [isOpen, setIsOpen] = useState(false);
