@@ -6,48 +6,47 @@ const Footer = () => {
     <footer className="rr-footer">
       <div className="footer-container">
 
-        {/* Logo / Nombre */}
-        <div className="footer-col">
-          <h2 className="footer-logo">RR BIKER</h2>
+        {/* Logo / Branding */}
+        <div className="footer-col branding">
+          <h2 className="footer-logo">RR<span> BIKER</span></h2>
           <p className="footer-text">
-            Servicio y repuestos para motos con calidad, rapidez y confianza.
+            Pasión por la excelencia en cada repuesto. Elevamos el estándar de tu ruta con calidad premium.
           </p>
+          <div className="footer-socials">
+            <a href="#" className="social-btn ig" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+            <a href="#" className="social-btn tk" aria-label="TikTok"><i className="fab fa-tiktok"></i></a>
+            <a href="#" className="social-btn ws" aria-label="WhatsApp"><i className="fab fa-whatsapp"></i></a>
+          </div>
         </div>
 
-        {/* Links */}
+        {/* Links Rápidos */}
         <div className="footer-col">
-          <h3 className="footer-title">Enlaces</h3>
+          <h3 className="footer-title">Explorar</h3>
           <ul className="footer-links">
             <li><a href="/">Inicio</a></li>
-            <li><a href="/servicios">Servicios</a></li>
-            <li><a href="/productos">Productos</a></li>
-            <li><a href="/contacto">Contacto</a></li>
+            <li><a href="/productos">Catálogo</a></li>
+            <li><a href="/servicios">Taller Especializado</a></li>
+            <li><a href="/contacto">Ubicación</a></li>
           </ul>
         </div>
 
-        {/* Contacto */}
+        {/* Contacto Directo */}
         <div className="footer-col">
-          <h3 className="footer-title">Contacto</h3>
-          <p className="footer-text">📍 Venezuela</p>
-          <p className="footer-text">📞 +58 424 123 4567</p>
-          <p className="footer-text">✉️ contacto@rrbiker.com</p>
-        </div>
-
-        {/* Redes */}
-        <div className="footer-col">
-          <h3 className="footer-title">Síguenos</h3>
-          <div className="footer-socials">
-            <a href="#" className="social-btn">FB</a>
-            <a href="#" className="social-btn">IG</a>
-            <a href="#" className="social-btn">YT</a>
+          <h3 className="footer-title">Atención</h3>
+          <div className="contact-info">
+            <p className="footer-text"><i className="fas fa-map-marker-alt"></i> Guacara, Venezuela</p>
+            <p className="footer-text"><i className="fas fa-phone-alt"></i> +58 424 123 4567</p>
+            <p className="footer-text"><i className="fas fa-envelope"></i> ventas@rrbiker.com</p>
           </div>
         </div>
 
       </div>
 
-      {/* Línea final */}
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} RR BIKER - Todos los derechos reservados.</p>
+        <div className="bottom-container">
+          <p>© {new Date().getFullYear()} RR BIKER - Built for the road.</p>
+          <div className="bottom-line"></div>
+        </div>
       </div>
     </footer>
   );
