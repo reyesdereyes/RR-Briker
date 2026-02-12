@@ -1,7 +1,8 @@
 // HeaderBar.jsx - ADAPTADO PARA RR BIKER
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
+import "../css/Header.css"; 
+
 
 const HeaderBar = () => {
   // ===== ESTADOS BÁSICOS =====
@@ -123,7 +124,7 @@ const HeaderBar = () => {
           {/* LOGO RR BIKER */}
           <div className="logo-area">
             <Link to="/" className="logo-link">
-              <img src="/RR Biker - SVG (1).png" alt="RR Biker" className="logo-img" />
+              <img src="/SVG 1.svg" alt="RR Biker" className="logo-img" />
             </Link>
           </div>
 

@@ -72,7 +72,7 @@
 .logo-img {
   height: clamp(45px, 10vw, 70px);
   width: auto;
-  max-width: clamp(160px, 25vw, 220px);
+  max-width: clamp(16px, 8vw, 200px);
   object-fit: contain;
   transition: all var(--trans-fast) ease;
   filter: drop-shadow(0 clamp(2px, 1vw, 4px) clamp(6px, 2vw, 12px) rgba(246,12,20,0.3));

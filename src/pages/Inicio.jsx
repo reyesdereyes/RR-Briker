@@ -1,54 +1,67 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Header from '../components/Header'
-import './Inicio.css'
+import React, { useEffect, useRef, useState } from 'react';
+import Header from '../components/Header';
+import Whatsapp from '../components/whatsapp.jsx'; // ← NUEVO COMPONENTE
+import '../css/Inicio.css';
+import Footer from '../components/Footer.jsx';
 
 const Inicio = () => {
-  const [scrollY, setScrollY] = useState(0)
-  const caroselInfoRef = useRef(null)
-  const caroselBoxRef = useRef(null)
-  const statsRef = useRef(null)
-  const serviciosRef = useRef(null)
+  const [scrollY, setScrollY] = useState(0);
+  
+  // Refs para animaciones de entrada
+  const caroselInfoRef = useRef(null);
+  const caroselBoxRef = useRef(null);
+  const statsRef = useRef(null);
+  const serviciosRef = useRef(null);
+  const categoriasRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
-    const targets = [caroselInfoRef.current, caroselBoxRef.current, statsRef.current, serviciosRef.current].filter(Boolean)
-    if (!targets.length) return
+    // Lista de elementos a observar para la animación de entrada
+    const targets = [
+      caroselInfoRef.current, 
+      caroselBoxRef.current, 
+      categoriasRef.current, 
+      serviciosRef.current,
+      statsRef.current
+    ].filter(Boolean);
+
+    if (!targets.length) return;
 
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view')
-          obs.unobserve(entry.target)
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
         }
-      })
-    }, { threshold: 0.15 })
+      });
+    }, { threshold: 0.15 });
 
-    targets.forEach(t => observer.observe(t))
-    return () => observer.disconnect()
-  }, [])
+    targets.forEach(t => observer.observe(t));
+    return () => observer.disconnect();
+  }, []);
 
   const stats = [
     { label: 'Productos', value: '5,247+', color: '#F60C14' },
     { label: 'Marcas', value: '89+', color: '#F60C14' },
     { label: 'Envíos', value: '24,561+', color: '#F60C14' },
     { label: 'Satisfechos', value: '98.7%', color: '#F60C14' }
-  ]
+  ];
 
   const servicios = [
     { icon: '🚚', title: 'Delivery Express', desc: 'Entrega en 24-48h a todo el país' },
     { icon: '🛠️', title: 'Taller Especializado', desc: 'Mecánicos certificados 24/7' },
     { icon: '💳', title: 'Financiación', desc: 'Hasta 12 cuotas sin intereses' },
     { icon: '📞', title: 'Asesoría Personalizada', desc: 'Llamanos y te ayudamos' }
-  ]
+  ];
 
   return (
     <>
-      <Header/>
+      <Header />
       
       {/* HERO SECTION */}
       <section className="hero-section">
@@ -69,19 +82,35 @@ const Inicio = () => {
         </div>
       </section>
 
-      {/* STATS */}
+      {/* CATEGORÍAS POPULARES */}
+      <section className="categorias-section" ref={categoriasRef}>
+        <div className="container">
+          <h2 className="section-title">Categorías Populares</h2>
+          <div className="categorias-grid">
+            {['Cascos', 'Guantes', 'Ropa', 'Repuestos', 'Accesorios', 'Neumáticos'].map(cat => (
+              <div key={cat} className="categoria-card">
+                <div className="cat-icon">🏍️</div>
+                <h4>{cat}</h4>
+                <span className="cat-count">+{Math.floor(Math.random() * 500) + 100} productos</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STATS SECTION */}
       <section className="stats-section" ref={statsRef}>
         <div className="stats-container">
           {stats.map((stat, i) => (
             <div key={i} className="stat-item">
-              <div className="stat-number" style={{'--accent-color': stat.color}}>{stat.value}</div>
+              <div className="stat-number" style={{ '--accent-color': stat.color }}>{stat.value}</div>
               <div className="stat-label">{stat.label}</div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* MAIN CONTENT */}
+      {/* PRODUCTOS Y CAROUSEL INFO */}
       <div className="main-container">
         <div className="carosel-layout">
           <aside className="carosel-info enhanced" ref={caroselInfoRef}>
@@ -92,7 +121,7 @@ const Inicio = () => {
                 <span className="badge new">✨ Nuevo</span>
               </div>
             </div>
-            <h2>Accesorios <br/><span className="gradient-text">Premium</span></h2>
+            <h2>Accesorios <br /><span className="gradient-text">Premium</span></h2>
             <p>Encuentra accesorios y repuestos para tu moto con la mejor calidad. <strong>Delivery gratis</strong> + garantía de por vida.</p>
             <div className="features-list">
               <div className="feature"><span>🚚</span> Delivery Gratis</div>
@@ -181,28 +210,36 @@ const Inicio = () => {
             <div className="contacto-info">
               <div className="contacto-item">
                 <span className="contacto-icon">📍</span>
-                <h4>Guacara, Carabobo</h4>
-                <p>Av. Principal #123, Zona Industrial</p>
+                <div>
+                  <h4>Guacara, Carabobo</h4>
+                  <p>Av. Principal #123, Zona Industrial</p>
+                </div>
               </div>
               <div className="contacto-item">
                 <span className="contacto-icon">📞</span>
-                <h4>+58 424-123-4567</h4>
-                <p>Llámanos ahora mismo</p>
+                <div>
+                  <h4>+58 424-123-4567</h4>
+                  <p>Llámanos ahora mismo</p>
+                </div>
               </div>
               <div className="contacto-item">
                 <span className="contacto-icon">✉️</span>
-                <h4>ventas@rrbiker.com</h4>
-                <p>Respuesta en menos de 2h</p>
+                <div>
+                  <h4>ventas@rrbiker.com</h4>
+                  <p>Respuesta en menos de 2h</p>
+                </div>
               </div>
               <div className="contacto-item">
                 <span className="contacto-icon">🕒</span>
-                <h4>Horario</h4>
-                <p>Lun-Vie 8AM-7PM | Sáb 9AM-5PM</p>
+                <div>
+                  <h4>Horario</h4>
+                  <p>Lun-Vie 8AM-7PM | Sáb 9AM-5PM</p>
+                </div>
               </div>
             </div>
             <div className="contacto-form">
               <h3>Envíanos un Mensaje</h3>
-              <form>
+              <form onSubmit={(e) => e.preventDefault()}>
                 <input type="text" placeholder="Tu nombre" />
                 <input type="tel" placeholder="Tu teléfono" />
                 <textarea placeholder="Cuéntanos qué necesitas..."></textarea>
@@ -213,21 +250,11 @@ const Inicio = () => {
         </div>
       </section>
 
-      {/* CATEGORÍAS */}
-      <section className="categorias-section">
-        <h2 className="section-title">Categorías Populares</h2>
-        <div className="categorias-grid">
-          {['Casos', 'Guantes', 'Ropa', 'Repuestos', 'Accesorios', 'Neumáticos'].map(cat => (
-            <div key={cat} className="categoria-card">
-              <div className="cat-icon">🏍️</div>
-              <h4>{cat}</h4>
-              <span className="cat-count">+{Math.floor(Math.random()*500)+100} productos</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* COMPONENTE DE WHATSAPP FLOTANTE */}
+      <Whatsapp />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Inicio
+export default Inicio;
