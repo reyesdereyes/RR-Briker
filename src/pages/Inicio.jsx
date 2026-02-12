@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Whatsapp from "../components/whatsapp.jsx";
+import Mensaje from "../components/Mensaje";
 import "../css/Inicio.css";
 
 const Inicio = () => {
@@ -180,7 +180,7 @@ const Inicio = () => {
         </div>
       </section>
 
-      <Whatsapp />
+      <Mensaje />
       <Footer />
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../css/Whatsapp.css"; // Asegúrate de crear este archivo con los estilos necesarios
 
-const Whatsapp = () => {
+const Mensaje = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showBadge, setShowBadge] = useState(true);
   const chatRef = useRef(null);
@@ -105,4 +105,4 @@ const Whatsapp = () => {
   );
 };
 
-export default Whatsapp;
+export default Mensaje;
